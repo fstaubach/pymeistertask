@@ -16,6 +16,9 @@ class Project(Resource):
     def tasks(self, **kwargs):
         return self.api.tasks.filter_by_project(project_id=self.id, **kwargs)
 
+    def checklists(self):
+        return self.api.checklists.filter_by_project(project_id=self.id)
+
 
 class ProjectsAPI(ResourceAPI):
     _resource = Project

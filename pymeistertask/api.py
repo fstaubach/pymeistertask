@@ -7,6 +7,10 @@ from .projects import ProjectsAPI
 from .sections import SectionsAPI
 from .tasklabels import TaskLabelsAPI
 from .tasks import TasksAPI
+from .workintervals import WorkintervalsAPI
+from .checklists import ChecklistsAPI
+from .checklistitems import ChecklistItemsAPI
+from .taskrelationships import TaskRelationshipsAPI
 
 
 class MeisterTaskAPI(object):
@@ -22,6 +26,10 @@ class MeisterTaskAPI(object):
         self._sections = None
         self._tasklabels = None
         self._tasks = None
+        self._workintervals = None
+        self._checklists = None
+        self._checklistitems = None
+        self._taskrelationships = None
 
     @property
     def comments(self):
@@ -64,6 +72,30 @@ class MeisterTaskAPI(object):
         if self._tasks is None:
             self._tasks = TasksAPI(self)
         return self._tasks
+
+    @property
+    def workintervals(self):
+        if self._workintervals is None:
+            self._workintervals = WorkintervalsAPI(self)
+        return self._workintervals
+
+    @property
+    def checklists(self):
+        if self._checklists is None:
+            self._checklists = ChecklistsAPI(self)
+        return self._checklists
+
+    @property
+    def checklistitems(self):
+        if self._checklistitems is None:
+            self._checklistitems = ChecklistItemsAPI(self)
+        return self._checklistitems
+
+    @property
+    def taskrelationships(self):
+        if self._taskrelationships is None:
+            self._taskrelationships = TaskRelationshipsAPI(self)
+        return self._taskrelationships
 
     def __repr__(self):
         return "<MeisterTaskAPI>"

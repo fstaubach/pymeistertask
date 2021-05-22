@@ -12,6 +12,18 @@ class Task(Resource):
 
     def tasklabels(self):
         return self.api.tasklabels.filter_by_task(task_id=self.id)
+        
+    def workintervals(self):
+        return self.api.workintervals.filter_by_task(task_id=self.id)
+
+    def checklists(self):
+        return self.api.checklists.filter_by_task(task_id=self.id)
+
+    def checklistitems(self):
+        return self.api.checklistitems.filter_by_task(task_id=self.id)
+
+    def taskrelationships(self):
+        return self.api.taskrelationships.filter_by_task(task_id=self.id)
 
 
 class TasksAPI(ResourceAPI):
