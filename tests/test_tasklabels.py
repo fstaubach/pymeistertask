@@ -16,7 +16,7 @@ class TestTaskLabelsAPI(BaseTest):
     def test_get(self):
         with self.recorder.use_cassette("tasklabelsapi_get"):
             project, section, task, tasklabel = self.create_tasklabel()
-            same_tasklabel = self.api.tasklabels.get(id=tasklabel.id)
+            same_tasklabel = self.api.workinterval.get(id=tasklabel.id)
 
             assert isinstance(same_tasklabel, TaskLabel)
             assert tasklabel.id == same_tasklabel.id
@@ -26,7 +26,7 @@ class TestTaskLabelsAPI(BaseTest):
     def test_delete(self):
         with self.recorder.use_cassette("tasklabelsapi_delete"):
             project, section, task, tasklabel = self.create_tasklabel()
-            deleted = self.api.tasklabels.delete(id=tasklabel.id)
+            deleted = self.api.workinterval.delete(id=tasklabel.id)
 
             assert deleted is True
 

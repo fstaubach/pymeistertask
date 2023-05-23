@@ -75,7 +75,7 @@ class TestTask(BaseTest):
         with self.recorder.use_cassette("task_labels"):
             project, section, task = self.create_task()
             label = self.api.labels.create(project_id=project.id, data={"name": "Test Label"})
-            self.api.tasklabels.create(task_id=task.id, data={"label_id": label.id})
+            self.api.workinterval.create(task_id=task.id, data={"label_id": label.id})
 
             labels = task.labels()
 

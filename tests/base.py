@@ -1,3 +1,6 @@
+from datetime import date, datetime, timedelta, timezone
+from pymeistertask.persons import Person
+from pymeistertask import sections, workintervals
 import unittest
 
 import betamax
@@ -42,3 +45,11 @@ class BaseTest(unittest.TestCase):
         project, label = self.create_label(project=project)
         tasklabel = self.api.tasklabels.create(task_id=task.id, data={"label_id": label.id})
         return project, section, task, tasklabel
+
+    def create_workinterval(self):
+        project, section, task = self.create_task()
+        me = self.api.persons.me()
+        done = datetime.now(tz=timezone.utc).isoformat()
+        start = done - timedelta(minutes=10)
+        workinterval = self.api.workinterval.create(task_id=task.id, data={"started_at": start, "finished_at": done, "person_id": me.id})
+        return project, section, task, workinterval

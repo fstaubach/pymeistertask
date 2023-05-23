@@ -2,7 +2,7 @@ from .resource import Resource, ResourceAPI
 
 
 class TaskRelationship(Resource):
-    _repr_attrs = ("id", "owner_id", "target_id" "type")
+    _repr_attrs = ("id", "owner_id", "target_id", "type")
 
 
 class TaskRelationshipsAPI(ResourceAPI):
