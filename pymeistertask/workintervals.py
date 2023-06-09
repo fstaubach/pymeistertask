@@ -23,4 +23,4 @@ class WorkintervalsAPI(ResourceAPI):
         return self._get_list(url="/tasks/{task_id}/work_intervals".format(task_id=task_id), **kwargs)
 
     def filter_by_project(self, project_id, **kwargs):
-        return self._get_list(url="/projects/{project_id}/work_intervals".format(task_id=project_id), **kwargs)
+        return self._get_list(url="/projects/{project_id}/work_intervals".format(project_id=project_id), **kwargs)
